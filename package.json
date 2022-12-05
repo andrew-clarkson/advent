@@ -1,0 +1,26 @@
+{
+  "name": "advent2022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "esm": "^3.2.25",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew-clarkson/advent.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrew-clarkson/advent/issues"
+  },
+  "homepage": "https://github.com/andrew-clarkson/advent#readme"
+}
