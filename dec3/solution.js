@@ -31,54 +31,54 @@ const alphabet = alpha.map((x) => String.fromCharCode(x));
 
 //Problem 1
 
-// let commonElements = sackArray.map((sack) => {
-//   //split sacks into even halves
-//   const halfSack = sack.length / 2;
-//   let halfOne = sack.slice(0, halfSack).split('');
-//   let halfTwo = sack.slice(halfSack).split('');
+let commonElements = sackArray.map((sack) => {
+  //split sacks into even halves
+  const halfSack = sack.length / 2;
+  let halfOne = sack.slice(0, halfSack).split('');
+  let halfTwo = sack.slice(halfSack).split('');
 
-//   //find common element (case sensitive)
-//   const commonElement = halfOne.find((letter) => {
-//     return halfTwo.includes(letter);
-//   });
+  //find common element (case sensitive)
+  const commonElement = halfOne.find((letter) => {
+    return halfTwo.includes(letter);
+  });
 
-//   //find priority
-//   return alphabet.indexOf(commonElement) + 1;
-// });
+  //find priority
+  return alphabet.indexOf(commonElement) + 1;
+});
 
-// //sum priorities
-// const sumPriorities = commonElements.reduce((acc, curr) => acc + curr, 0);
+//sum priorities
+const sumPriorities = commonElements.reduce((acc, curr) => acc + curr, 0);
 
-// console.log(sumPriorities);
+console.log(sumPriorities);
 
-// //Problem 2
+//Problem 2
 
-// let groupPriority = 0;
+let groupPriority = 0;
 
-// for (let i = 0; i < sackArray.length; i += 3) {
-//   //set up arrays of 3 elves
-//   let groupOfThree = sackArray.slice(i, i + 3);
+for (let i = 0; i < sackArray.length; i += 3) {
+  //set up arrays of 3 elves
+  let groupOfThree = sackArray.slice(i, i + 3);
 
-//   if (groupOfThree.length != 3) {
-//     break;
-//   }
+  if (groupOfThree.length != 3) {
+    break;
+  }
 
-//   //find common element
-//   const commonElement = groupOfThree[0]
-//     .split('')
-//     .filter((letter1) => {
-//       return groupOfThree[1].split('').includes(letter1);
-//     })
-//     .find((letter2) => {
-//       return groupOfThree[2].split('').includes(letter2);
-//     });
+  //find common element
+  const commonElement = groupOfThree[0]
+    .split('')
+    .filter((letter1) => {
+      return groupOfThree[1].split('').includes(letter1);
+    })
+    .find((letter2) => {
+      return groupOfThree[2].split('').includes(letter2);
+    });
 
-//   //find priority
-//   //add to priorities
-//   groupPriority += alphabet.indexOf(commonElement) + 1;
-// }
+  //find priority
+  //add to priorities
+  groupPriority += alphabet.indexOf(commonElement) + 1;
+}
 
-// console.log(groupPriority);
+console.log(groupPriority);
 
 const charRange = function (first, last) {
   const ret = [];
@@ -112,9 +112,9 @@ const commonElementInSack = (sack) => {
   });
 };
 
-assert('p', commonElementInSack('vJrwpWtwJgWrhcsFMMfFFhFp'));
-assert('L', commonElementInSack('jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL'));
-assert('P', commonElementInSack('PmmdzqPrVvPwwTWBwg'));
+assert('p' == commonElementInSack('vJrwpWtwJgWrhcsFMMfFFhFp'));
+assert('L' == commonElementInSack('jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL'));
+assert('P' == commonElementInSack('PmmdzqPrVvPwwTWBwg'));
 
 // console.log(commonElement('vJrwpWtwJgWrhcsFMMfFFhFp'));
 
@@ -138,10 +138,10 @@ const priority = (commonElement) => {
   return alpha2.indexOf(commonElement) + 1;
 };
 
-assert(16, priority('p'));
-assert(38, priority('L'));
-assert(42, priority('P'));
-assert(22, priority('v'));
+assert(16 == priority('p'));
+assert(38 == priority('L'));
+assert(42 == priority('P'));
+assert(22 == priority('v'));
 
 //sum priorities
 // const sumPriorities = commonElements.reduce((acc, curr) => acc + curr, 0);
@@ -164,7 +164,7 @@ const groupElvesIntoThree = (sacks) => {
 };
 
 // is this really just testing lodash, which we should assume works?
-assert(
+assert.deepEqual(
   [
     [
       'vJrwpWtwJgWrhcsFMMfFFhFp',
@@ -195,21 +195,21 @@ const elementsCommonToThreeElves = (groupOfThree) => {
 };
 
 assert(
-  'r',
-  elementsCommonToThreeElves([
-    'vJrwpWtwJgWrhcsFMMfFFhFp',
-    'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
-    'PmmdzqPrVvPwwTWBwg',
-  ])
+  'r' ==
+    elementsCommonToThreeElves([
+      'vJrwpWtwJgWrhcsFMMfFFhFp',
+      'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
+      'PmmdzqPrVvPwwTWBwg',
+    ])
 );
 
 assert(
-  'Z',
-  elementsCommonToThreeElves([
-    'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
-    'ttgJtRGJQctTZtZT',
-    'CrZsJsPPZsGzwwsLwLmpwMDw',
-  ])
+  'Z' ==
+    elementsCommonToThreeElves([
+      'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
+      'ttgJtRGJQctTZtZT',
+      'CrZsJsPPZsGzwwsLwLmpwMDw',
+    ])
 );
 
 const groups = groupElvesIntoThree(sackArray);
