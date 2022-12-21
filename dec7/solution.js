@@ -21,8 +21,7 @@ const terminalLines = syncReadFile('./input.txt');
 
 let fileSystem = {};
 let currentFileSum = 0;
-let path = ['/'];
-let pathString = '/';
+let path = [];
 
 const check = (input) => {
   if (input[2] === 'c') return input.split(' ')[2];
@@ -38,27 +37,27 @@ assert('..' === check('$ cd ..'));
 assert(344324 === check('344324 c.txt'));
 assert(2 === check('2 d.txt'));
 
+const getPathString = (path) => path.join(',');
+
 const handleAddFileSums = () => {
+  const pathString = getPathString(path);
   if (!fileSystem[pathString]) fileSystem[pathString] = { sum: 0 };
 
-  path.forEach((dir) => {
+  for (let i = path.length; i > 0; i--) {
+    let dir = path.slice(0, i).toString();
     fileSystem[dir].sum += currentFileSum;
-  });
+  }
 
   currentFileSum = 0;
 };
 
 const handlecd = (input) => {
   if (input === '..') {
-    const lengthOfInput = pathString.length - input.length;
-    pathString = pathString.slice(0, lengthOfInput - 1);
     path.pop();
   } else if (input === '/') {
-    pathString = '/';
     path = ['/'];
   } else {
-    pathString = pathString.concat(input);
-    path.push(pathString);
+    path.push(input);
   }
 };
 
